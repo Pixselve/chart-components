@@ -16,6 +16,7 @@ import {
 import Box from "@cloudscape-design/components/box";
 import { InternalChartTooltip } from "@cloudscape-design/components/internal/do-not-use/chart-tooltip";
 
+import { CoreChartProps } from "../../../core/interfaces";
 import { DebouncedCall } from "../../utils/utils";
 import { GetLegendTooltipContentProps, LegendItem, LegendTooltipContent } from "../interfaces";
 
@@ -32,6 +33,7 @@ export interface ChartLegendProps {
   ariaLabel?: string;
   actions?: React.ReactNode;
   position: "bottom" | "side";
+  horizontalAlignment?: CoreChartProps.LegendOptionsHorizontalAlignment;
   onItemHighlightEnter: (item: LegendItem) => void;
   onItemHighlightExit: () => void;
   onItemVisibilityChange: (hiddenItems: string[]) => void;
@@ -48,6 +50,7 @@ export const ChartLegend = ({
   onItemHighlightEnter,
   onItemHighlightExit,
   getTooltipContent,
+  horizontalAlignment,
 }: ChartLegendProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const elementsByIndexRef = useRef<Record<number, HTMLElement>>([]);
@@ -281,6 +284,8 @@ export const ChartLegend = ({
           <div
             className={clsx({
               [styles["legend-bottom"]]: position === "bottom",
+              [styles["legend-bottom-start"]]: horizontalAlignment === "start",
+              [styles["legend-bottom-center"]]: horizontalAlignment === "center",
               [styles["legend-side"]]: position === "side",
             })}
           >

@@ -1573,43 +1573,12 @@ Supported Highcharts versions: 12.",
         "i18nTag": undefined,
         "inlineType": {
           "name": "CoreChartProps.LegendOptions",
-          "properties": [
-            {
-              "name": "actions",
-              "optional": true,
-              "type": "React.ReactNode",
-            },
-            {
-              "name": "bottomMaxHeight",
-              "optional": true,
-              "type": "number",
-            },
-            {
-              "name": "enabled",
-              "optional": true,
-              "type": "boolean",
-            },
-            {
-              "inlineType": {
-                "name": ""side" | "bottom"",
-                "type": "union",
-                "valueDescriptions": undefined,
-                "values": [
-                  "side",
-                  "bottom",
-                ],
-              },
-              "name": "position",
-              "optional": true,
-              "type": "string",
-            },
-            {
-              "name": "title",
-              "optional": true,
-              "type": "string",
-            },
+          "type": "union",
+          "valueDescriptions": undefined,
+          "values": [
+            "BaseLegendOptions & { bottomMaxHeight?: number | undefined; } & CoreChartProps.LegendOptionsBottom",
+            "BaseLegendOptions & { bottomMaxHeight?: number | undefined; } & CoreChartProps.LegendOptionsSide",
           ],
-          "type": "object",
         },
         "name": "legend",
         "optional": true,

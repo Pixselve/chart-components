@@ -411,10 +411,24 @@ export namespace CoreChartProps {
     content: React.ReactNode;
   }
 
-  export interface LegendOptions extends BaseLegendOptions {
+  export type LegendOptions = BaseLegendOptions & {
     bottomMaxHeight?: number;
-    position?: "bottom" | "side";
+  } & (LegendOptionsBottom | LegendOptionsSide);
+
+  export interface LegendOptionsSide {
+    position?: "side";
   }
+  export interface LegendOptionsBottom {
+    position: "bottom";
+    /**
+     * When {@link position} is set to "bottom", horizontalAlignment sets the legend horizontal alignment.
+     */
+    horizontalAlignment?: LegendOptionsHorizontalAlignment;
+  }
+
+  export const LegendOptionsAlignments = ["start", "center"] as const;
+  export type LegendOptionsHorizontalAlignment = (typeof LegendOptionsAlignments)[number];
+
   export type LegendItem = InternalComponentTypes.LegendItem;
   export type LegendTooltipContent = InternalComponentTypes.LegendTooltipContent;
   export type GetLegendTooltipContent = InternalComponentTypes.GetLegendTooltipContent;
